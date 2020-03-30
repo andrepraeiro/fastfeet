@@ -42,6 +42,7 @@ class RecipientController {
       address,
     });
   }
+
   static async update(req, res) {
     const recipient = await Recipient.findByPk(req.params.id);
     if (!recipient) {
