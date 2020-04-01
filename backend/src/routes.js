@@ -3,11 +3,12 @@ import multer from 'multer';
 import multerConfig from './config/multer';
 
 import UserController from './app/controllers/UserController';
+import AdminUserController from './app/controllers/Admin/UserController';
 import SessionController from './app/controllers/SessionController';
-import RecipientController from './app/controllers/RecipientController';
-import DeliverymanController from './app/controllers/DeliverymanController';
+import RecipientController from './app/controllers/Admin/RecipientController';
+import DeliverymanController from './app/controllers/Admin/DeliverymanController';
 import FileController from './app/controllers/FileController';
-import DeliveryController from './app/controllers/DeliveryController';
+import DeliveryController from './app/controllers/Admin/DeliveryController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -17,20 +18,20 @@ const uploads = multer(multerConfig);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
-routes.put('/users', UserController.update);
+routes.put('/admin/users', AdminUserController.update);
 
-routes.post('/recipients', RecipientController.store);
-routes.put('/recipients/:id', RecipientController.update);
+routes.post('/admin/recipients', RecipientController.store);
+routes.put('/admin/recipients/:id', RecipientController.update);
 
-routes.get('/deliverymans', DeliverymanController.index);
-routes.post('/deliverymans', DeliverymanController.store);
-routes.put('/deliverymans/:id', DeliverymanController.update);
-routes.delete('/deliverymans/:id', DeliverymanController.delete);
+routes.get('/admin/deliverymans', DeliverymanController.index);
+routes.post('/admin/deliverymans', DeliverymanController.store);
+routes.put('/admin/deliverymans/:id', DeliverymanController.update);
+routes.delete('/admin/deliverymans/:id', DeliverymanController.delete);
 
-routes.get('/deliveries', DeliveryController.index);
-routes.post('/deliveries', DeliveryController.store);
-routes.put('/deliveries/:id', DeliveryController.update);
-routes.delete('/deliveries/:id', DeliveryController.delete);
+routes.get('/admin/deliveries', DeliveryController.index);
+routes.post('/admin/deliveries', DeliveryController.store);
+routes.put('/admin/deliveries/:id', DeliveryController.update);
+routes.delete('/admin/deliveries/:id', DeliveryController.delete);
 
 routes.post('/files', uploads.single('file'), FileController.store);
 
