@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import Recipient from '../models/Recipient';
+import Recipient from '../../models/Recipient';
 
 class RecipientController {
   static async store(req, res) {

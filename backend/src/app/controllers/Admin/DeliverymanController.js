@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import Deliveryman from '../models/Deliveryman';
-import File from '../models/File';
+import Deliveryman from '../../models/Deliveryman';
+import File from '../../models/File';
 
 class DeliverymanController {
   static async index(req, res) {
